@@ -1,6 +1,6 @@
 # TFA4 Presentation Guide
 
-1. Open `http://localhost:8084/customers` in a signed out browser. Explain that the `AuthFilter` redirects guests to `/login` before the controller runs.
+1. Open `http://localhost:8080/customers` in a signed out browser. Explain that the `AuthFilter` redirects guests to `/login` before the controller runs.
 2. Enter an incorrect password. Point out the generic error and that no staff session was created.
 3. Sign in with your local credential from the Git ignored `.local-credentials` file. Do not display or read the password aloud. Explain that `password_verify()` checks the saved hash and the app regenerates the session ID.
 4. Show the customer and staff directories, plus each new and edit form. Explain that both GET and POST routes are protected and the original TFA3 validation and upload features still work.

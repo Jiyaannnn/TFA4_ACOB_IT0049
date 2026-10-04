@@ -27,7 +27,7 @@ Set `.env` for your own MySQL account and local URL:
 
 ```ini
 CI_ENVIRONMENT = development
-app.baseURL = 'http://localhost:8084/'
+app.baseURL = 'http://localhost:8080/'
 database.default.hostname = 127.0.0.1
 database.default.database = ledgerline_pos_tfa4
 database.default.username = root
@@ -72,10 +72,10 @@ Choose one database setup method:
 Start the app:
 
 ```bash
-php spark serve --port 8084
+php spark serve --port 8080
 ```
 
-Open http://localhost:8084/login. Use the same hostname as `app.baseURL` so CSRF cookies are sent correctly.
+Open http://localhost:8080/login. Use the same hostname as `app.baseURL` so CSRF cookies are sent correctly.
 
 ## Where to look
 
