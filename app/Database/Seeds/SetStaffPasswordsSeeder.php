@@ -16,6 +16,6 @@ class SetStaffPasswordsSeeder extends Seeder
         // Use this after importing the SQL export on another device.
         // Each staff member receives a valid hash; they can change it in the edit form.
         $hash = password_hash($initialPassword, PASSWORD_DEFAULT);
-        $this->db->table('users')->update(['password' => $hash]);
+        $this->db->table('users')->where('id >', 0)->update(['password' => $hash]);
     }
 }
