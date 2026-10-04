@@ -11,6 +11,12 @@ This is my CodeIgniter 4 POS activity for IT0049 Technical Formative Assessment 
 - New staff accounts require a password of at least 12 characters; editing a staff member can optionally replace the password.
 - Existing TFA3 form validation, CSRF protection, avatar uploads, tasks, and public pages remain available.
 
+## Navigation and access behavior
+
+While signed out, the header shows Today, All tasks, Profile, About, and Staff sign in. The Today page replaces its customer and staff shortcuts with one staff sign in card. After sign in, the Customer and Staff links and shortcuts appear. This changes only what visitors see; `AuthFilter` still protects all customer and staff routes.
+
+Opening a protected URL directly while signed out redirects to `/login` with a message naming the requested section. After a successful login, the application returns to that customer or staff page. The return destination is limited to local customer and staff GET pages. An incorrect password keeps the message visible without creating a session.
+
 ## Requirements
 
 PHP 8.2+, Composer 2, MySQL 8+, and PHP extensions `intl`, `mysqli`, `mbstring`, `fileinfo`, and `gd` with JPEG support. The local checks for this submission used PHP 8.5.10, Composer 2.10.3, and CodeIgniter 4.7.4.

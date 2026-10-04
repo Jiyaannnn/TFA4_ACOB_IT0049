@@ -11,7 +11,10 @@ class Auth extends BaseController
         if (session()->get('staff_id')) {
             return redirect()->to(site_url('customers'));
         }
-        return view('auth/login', ['title' => 'Staff Sign In', 'activePage' => 'login', 'error' => null, 'username' => '']);
+        return view('auth/login', [
+            'title' => 'Staff Sign In', 'activePage' => 'login',
+            'error' => null, 'username' => '', 'notice' => session()->get('auth_notice'),
+        ]);
     }
 
     public function attempt()
@@ -25,13 +28,20 @@ class Auth extends BaseController
             return view('auth/login', [
                 'title' => 'Staff Sign In', 'activePage' => 'login',
                 'error' => 'The username or password is incorrect.', 'username' => $username,
+                'notice' => session()->get('auth_notice'),
             ]);
         }
 
         // Rotate the session ID when privileges change to prevent session fixation.
         session()->regenerate(true);
         session()->set(['staff_id' => (int) $user['id'], 'staff_name' => $user['full_name']]);
-        return redirect()->to(site_url('customers'))->with('success', 'Welcome back, ' . $user['full_name'] . '.');
+        $requested = (string) session()->get('auth_redirect');
+        session()->remove(['auth_redirect', 'auth_notice']);
+        // Only local customer and staff GET pages can become return destinations.
+        $destination = preg_match('~^/(?:customers|users)(?:/[0-9]+/edit|/new)?$~', $requested)
+            ? site_url(ltrim($requested, '/'))
+            : site_url('customers');
+        return redirect()->to($destination)->with('success', 'Welcome back, ' . $user['full_name'] . '.');
     }
 
     public function logout()

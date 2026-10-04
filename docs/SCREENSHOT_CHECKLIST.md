@@ -1,6 +1,6 @@
 # TFA4 Screenshot Checklist
 
-These are real captures from the running local CodeIgniter application. Capture at the same desktop width for Figures 1–7 and 9–13; Figure 8 uses 390 pixels. Keep account passwords and local credential files out of every screenshot.
+These are real captures from the running local CodeIgniter application. Capture at the same desktop width for Figures 1–7 and 9–16; Figure 8 uses 390 pixels. Keep account passwords and local credential files out of every screenshot.
 
 | Figure | Page or file | What must be visible | Caption | Short explanation |
 | --- | --- | --- | --- | --- |
@@ -17,5 +17,8 @@ These are real captures from the running local CodeIgniter application. Capture 
 | 11 | `/customers/new` | Blank customer form | My protected customer creation form. | Signed in staff can add a customer. |
 | 12 | `/users/new` | Password field and staff creation form | My new staff form requires a password. | New passwords are hashed before storage. |
 | 13 | `/users` after a test avatar upload | Staff listing with avatar | My valid JPEG avatar appears after upload. | The existing upload workflow still works. |
+| 14 | `/` while signed out | Public header, Staff sign in, and one staff access card | My signed out home page hides protected record links. | The page offers one clear way to sign in. |
+| 15 | `/login` after opening `/customers` directly | “Sign in to view customer accounts” message and login form | My direct customer link explains why sign in is needed. | The filter still blocks a guest and remembers the requested page. |
+| 16 | `/` while signed in | Customer and Staff header links and both record shortcuts | My record links appear after staff sign in. | The authenticated navigation makes protected destinations available. |
 
-Evidence files are in `docs/evidence/figure-01-login.png` through `figure-13-avatar-upload.png`. The temporary test customer and staff records were removed after testing, so Figures 11–13 document the test sequence rather than the final database contents.
+Evidence files are in `docs/evidence/figure-01-login.png` through `figure-16-signed-in-home.png`. The temporary test customer and staff records were removed after testing, so Figures 11–13 document the test sequence rather than the final database contents.

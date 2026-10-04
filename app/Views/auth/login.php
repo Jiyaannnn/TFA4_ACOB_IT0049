@@ -4,6 +4,7 @@
     <div class="auth-intro"><p class="eyebrow">STAFF ACCESS</p><h1 id="sign-in-title">Welcome back.</h1><p>Sign in to manage Ledgerline Refill customers and staff accounts.</p></div>
     <form class="auth-card" action="<?= site_url('login') ?>" method="post">
         <?= csrf_field() ?>
+        <?php if ($notice): ?><p class="auth-notice" role="status"><?= esc($notice) ?></p><?php endif ?>
         <?php if ($error): ?><p class="auth-error" role="alert"><?= esc($error) ?></p><?php endif ?>
         <label for="username">Username</label>
         <input id="username" name="username" type="text" value="<?= esc($username) ?>" autocomplete="username" required maxlength="50">
